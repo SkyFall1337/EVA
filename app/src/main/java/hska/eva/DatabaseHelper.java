@@ -18,6 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     Student._ID + "INTEGER PRIMARY KEY," +
                     Student.COLUMN_NAME_EMAIL + " TEXT," +
                     Student.COLUMN_NAME_PASSWORD + " TEXT" +
+                    Student.COLUM_NAME_VORNAME + "TEXT" +
+                    Student.COLUM_NAME_NACHNAME + "TEXT" +
                     ");";
 
     public static final String SQL_CREATE_TABLE_RATING =
@@ -62,9 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TABLE_STUDENT);
         db.execSQL(SQL_CREATE_TABLE_RATING);
 
-        String ROW2 = "INSERT INTO " + Student.TABLE_NAME + " Values (1 , 'frlu1012@hs-karlsruhe.de', 'password');";
-        String ROW3 = "INSERT INTO " + Student.TABLE_NAME + " Values (2 , 'kost1012@hs-karlsruhe.de', 'password');";
-        String ROW4 = "INSERT INTO " + Student.TABLE_NAME + " Values (3 , 'beno1012@hs-karlsruhe.de', 'password');";
+        String ROW2 = "INSERT INTO " + Student.TABLE_NAME + " Values (1 , 'frlu1012@hs-karlsruhe.de', 'Lukas', 'Frank', 'password');";
+        String ROW3 = "INSERT INTO " + Student.TABLE_NAME + " Values (2 , 'kost1012@hs-karlsruhe.de', 'Stephan', 'Koch', 'password');";
+        String ROW4 = "INSERT INTO " + Student.TABLE_NAME + " Values (3 , 'beno1012@hs-karlsruhe.de', 'Norman', 'Beyerle','password');";
         String ROW5 = "INSERT INTO " + Rating.TABLE_NAME + " (" + Rating._ID + ", " + Rating.COLUMN_NAME_MOTIVATION + ", " + Rating.COLUMN_NAME_TEAMFAEHIGKEIT + ", " + Rating.COLUMN_NAME_KOMMUNIKATION + ", " + Rating.COLUMN_NAME_KNOWHOW + ", " + Rating.COLUMN_STUDENTB_FK + ", " + Rating.COLUMN_STUDENT_FK + ")" +
                 " Values " +
                 "(1, 3, 3, 3, 3, 1, 1)," +
