@@ -1,0 +1,56 @@
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:onClick="openStudent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:padding="6dip">
+
+        <ImageView
+            android:id="@+id/listViewStudentIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="6dip"
+            android:contentDescription="Student Picture"
+            android:src="@drawable/student_icon" />
+
+        <TextView
+            android:id="@+id/studentListViewSecondLine"
+            android:layout_width="fill_parent"
+            android:layout_height="26dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/listViewStudentIcon"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="Description"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/studentListViewFirstLine"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/studentListViewSecondLine"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_toRightOf="@id/listViewStudentIcon"
+            android:gravity="center_vertical"
+            android:text="Example application"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:visibility="invisible"
+            android:id="@+id/studentListViewStudentIdTextView"/>
+
+    </RelativeLayout>
+</TableRow>

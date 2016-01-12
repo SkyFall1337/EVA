@@ -31,6 +31,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import hska.eva.dao.DatabaseHelper;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -311,7 +313,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent i = new Intent(LoginActivity.this,Manager.class );
+                Intent i = new Intent(LoginActivity.this,ManagerActivity.class );
                 i.putExtra("Email", this.mEmail);
                 startActivity(i);
                 finish();

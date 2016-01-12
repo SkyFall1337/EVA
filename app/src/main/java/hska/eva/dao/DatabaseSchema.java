@@ -1,4 +1,4 @@
-package hska.eva;
+package hska.eva.dao;
 
 import android.provider.BaseColumns;
 
@@ -17,12 +17,12 @@ public final class DatabaseSchema {
     /**
      * Defines the columns for student table
      */
-    public static abstract class Student implements BaseColumns {
+    public static abstract class dbStudent implements BaseColumns {
         public static final String TABLE_NAME = "studenten";
         public static final String COLUMN_NAME_EMAIL = "email";
+        public static final String COLUMN_NAME_VORNAME = "vorname";
+        public static final String COLUMN_NAME_NACHNAME = "nachname";
         public static final String COLUMN_NAME_PASSWORD = "password";
-        public static final String COLUM_NAME_VORNAME = "vorname";
-        public static final String COLUM_NAME_NACHNAME = "nachname";
     }
 
     /**
