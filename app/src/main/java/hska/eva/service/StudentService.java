@@ -10,7 +10,6 @@ import hska.eva.dao.DatabaseSchema.dbStudent;
 import hska.eva.dao.StudentRepository;
 import hska.eva.domain.Student;
 
-
 /**
  * Created by Steko on 11.01.2016.
  */
@@ -22,10 +21,10 @@ public class StudentService {
         studentRepository = new StudentRepository(ctx);
     }
 
-    public List<Student> getAllStudents() {
+    public List<Student> findAllStudentsForOverView() {
         List<Student> students = new ArrayList<>();
 
-        Cursor cursor = studentRepository.getAllStudents();
+        Cursor cursor = studentRepository.findAllStudentsForOverview();
         cursor.moveToFirst();
         do {
             Long studentId = cursor.getLong(cursor.getColumnIndex(dbStudent._ID));
@@ -35,7 +34,7 @@ public class StudentService {
 
             System.out.println(email);
 
-            students.add(new Student(studentId, email, vorname, nachname));
+            students.add(new Student(studentId, email, vorname, nachname, null));
 
         } while (cursor.moveToNext());
 

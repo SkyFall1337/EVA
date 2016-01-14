@@ -36,7 +36,7 @@ public class StudentsFragment extends Fragment {
         contentView = inflater.inflate(R.layout.fragment_students_layout, container, false);
 
         studentsList = (TableLayout) contentView.findViewById(R.id.studentsScrollView);
-        insertStudentsInScrollView(studentService.getAllStudents());
+        insertStudentsInScrollView(studentService.findAllStudentsForOverView());
 
         return contentView;
     }

@@ -15,11 +15,14 @@ public class Student implements Serializable {
 
     private String nachname;
 
-    public Student(Long id, String email, String vorname, String nachname) {
+    private String password;
+
+    public Student(Long id, String email, String vorname, String nachname, String password) {
         this.id = id;
         this.email = email;
         this.vorname = vorname;
         this.nachname = nachname;
+        this.password = password;
     }
 
     public Long getId() {
@@ -52,5 +55,13 @@ public class Student implements Serializable {
 
     public void setNachname(String nachname) {
         this.nachname = nachname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
