@@ -48,7 +48,7 @@ public class StudentsFragment extends Fragment {
 
     private void insertStudentsInScrollView(List<Student> students){
         for(Student student : students){
-            insertStudentsInScrollView(students);
+            insertStudentInScrollView(student);
         }
     }
 

@@ -13,11 +13,9 @@ import hska.eva.dao.DatabaseSchema.dbStudent;
  * Created by Luke on 08.01.2016.
  */
 public class DatabaseHelper extends SQLiteOpenHelper{
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "eva.db";
 
-    private static final String TYPE_TEXT = " TEXT";
-    private static final String COMMA_SEP = ",";
     // STUDENT -----------------------------
     private static final String SQL_CREATE_STUDENT_TABLE =
             "CREATE TABLE " + dbStudent.TABLE_NAME + " (" +
@@ -44,7 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     "FOREIGN KEY(" + DatabaseSchema.dbRating.COLUMN_NAME_STUDENT_FK + ") REFERENCES " + dbStudent.TABLE_NAME + "(" + dbStudent._ID + "), " +
                     "FOREIGN KEY(" + DatabaseSchema.dbRating.COLUMN_NAME_STUDENT_FK + ") REFERENCES " + dbStudent.TABLE_NAME + "(" + dbStudent._ID + ")" +
                     ");";
-
 
     public static final String SQL_DELETE_RATING_TABLE =
             "DROP TABLE IF EXISTS " + dbRating.TABLE_NAME;
