@@ -1,6 +1,7 @@
 package hska.eva;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import hska.eva.fragments.ProfilFragment;
 import hska.eva.fragments.StudentsFragment;
@@ -19,6 +22,7 @@ public class ManagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     public static Context applicationContext;
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    public static final String INTENT_RATING_ID = "ratingID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,4 +74,15 @@ public class ManagerActivity extends AppCompatActivity {
             return tabtitlearray[position];
         }
     }
+
+
+    public void openRating(View clickedView){
+        Intent ratingIntent = new Intent(this, RatingDetailActivity.class);
+
+        TextView ratingId = (TextView) clickedView.findViewById(R.id.studentListViewStudentIdTextView);
+        ratingIntent.putExtra(INTENT_RATING_ID, ratingId.getText());
+
+        startActivity(ratingIntent);
+    }
+
 }

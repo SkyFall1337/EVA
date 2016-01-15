@@ -13,7 +13,7 @@ import hska.eva.dao.DatabaseSchema.dbStudent;
  * Created by Luke on 08.01.2016.
  */
 public class DatabaseHelper extends SQLiteOpenHelper{
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "eva.db";
 
     // STUDENT -----------------------------
@@ -68,23 +68,30 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(SQL_CREATE_RATING_TABLE);
 
         ContentValues values = new ContentValues();
-        values.put(dbStudent.COLUMN_NAME_EMAIL, "admin@admin.com");
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "frlu1012@hs-karlsruhe.de");
         values.put(dbStudent.COLUMN_NAME_VORNAME, "Lukas");
         values.put(dbStudent.COLUMN_NAME_NACHNAME, "Frank");
-        values.put(dbStudent.COLUMN_NAME_PASSWORD, "admin");
+        values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");
         db.insert(dbStudent.TABLE_NAME, null, values);
 
         values = new ContentValues();
-        values.put(dbStudent.COLUMN_NAME_EMAIL, "st@hs.de");
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "kost1012@hs-karlsruhe.de");
         values.put(dbStudent.COLUMN_NAME_VORNAME, "Stephan");
         values.put(dbStudent.COLUMN_NAME_NACHNAME, "Koch");
         values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");
         db.insert(dbStudent.TABLE_NAME, null, values);
 
         values = new ContentValues();
-        values.put(dbStudent.COLUMN_NAME_EMAIL, "no@hs.de");
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "beno1012@hs-karlsruhe.de.de");
         values.put(dbStudent.COLUMN_NAME_VORNAME, "Norman");
         values.put(dbStudent.COLUMN_NAME_NACHNAME, "Beyerle");
+        values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");
+        db.insert(dbStudent.TABLE_NAME, null, values);
+
+        values = new ContentValues();
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "Muma1012@hs-karlsruhe.de.de");
+        values.put(dbStudent.COLUMN_NAME_VORNAME, "Matthias");
+        values.put(dbStudent.COLUMN_NAME_NACHNAME, "Müller");
         values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");
         db.insert(dbStudent.TABLE_NAME, null, values);
     }
