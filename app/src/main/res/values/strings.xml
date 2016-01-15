@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">eva</string>
 
+    <string name="rating_detail_header">Rating Detail</string>
+
+
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

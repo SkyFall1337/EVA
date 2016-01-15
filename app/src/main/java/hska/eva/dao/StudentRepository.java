@@ -3,6 +3,7 @@ package hska.eva.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 
 import hska.eva.dao.DatabaseSchema.dbStudent;
 import hska.eva.domain.Student;
@@ -45,5 +46,16 @@ public class StudentRepository {
         }while(cursor.moveToNext());
 
         return null;
+    }
+
+    public Cursor findStudent(long studentId){
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        qb.setTables(
+                dbStudent.TABLE_NAME
+                );
+        return qb.query(readableDb,
+                null,
+                dbStudent.TABLE_NAME + "." + dbStudent._ID + " = " + studentId,
+                null, null, null, null);
     }
 }

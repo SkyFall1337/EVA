@@ -9,6 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RatingDetailActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingDetailEMail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name Student"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,16 +25,16 @@
         android:numStars="5"
         android:rating="2"
         android:stepSize="1"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bestätigen"
+        android:text="Bewertung abgeben"
         android:id="@+id/button"
-        android:layout_below="@+id/rating_kommunikation"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +42,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Motivation"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/ratingDetailEMail"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <RatingBar
@@ -43,8 +54,7 @@
         android:numStars="5"
         android:rating="2"
         android:stepSize="1"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,8 +62,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Teamfähigkeit"
         android:id="@+id/textView2"
-        android:layout_below="@+id/rating_motivation"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/rating_motivation" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,15 +70,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Know-how"
         android:id="@+id/textView3"
-        android:layout_below="@+id/rating_teamfaehigkeit"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/rating_teamfaehigkeit" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rating_knowhow"
         android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
         android:numStars="5"
         android:rating="2"
         android:stepSize="1" />
@@ -80,17 +87,25 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Kommunikation"
         android:id="@+id/textView4"
-        android:layout_below="@+id/rating_knowhow"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/rating_knowhow" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rating_kommunikation"
         android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true"
         android:numStars="5"
         android:rating="2"
         android:stepSize="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/ratingDetailVorname"
+        android:layout_below="@+id/ratingDetailEMail"
+        android:layout_alignLeft="@+id/ratingDetailEMail"
+        android:layout_alignStart="@+id/ratingDetailEMail" />
 
 </RelativeLayout>

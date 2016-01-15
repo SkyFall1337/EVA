@@ -17,6 +17,9 @@ public class Student implements Serializable {
 
     private String password;
 
+    public Student(){
+    }
+
     public Student(Long id, String email, String vorname, String nachname, String password) {
         this.id = id;
         this.email = email;

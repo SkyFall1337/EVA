@@ -25,7 +25,13 @@
         <activity
             android:name=".ManagerActivity"
             android:label="@string/title_activity_manager"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".RatingDetailActivity"
+            android:label="@string/rating_detail_header"
+            android:parentActivityName=".ManagerActivity" >
+        </activity>
     </application>
 
 </manifest>

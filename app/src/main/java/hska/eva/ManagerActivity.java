@@ -22,7 +22,7 @@ public class ManagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     public static Context applicationContext;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    public static final String INTENT_RATING_ID = "ratingID";
+    public static final String INTENT_STUDENT_ID = "studentID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +75,14 @@ public class ManagerActivity extends AppCompatActivity {
         }
     }
 
-
     public void openRating(View clickedView){
         Intent ratingIntent = new Intent(this, RatingDetailActivity.class);
 
         TextView ratingId = (TextView) clickedView.findViewById(R.id.studentListViewStudentIdTextView);
-        ratingIntent.putExtra(INTENT_RATING_ID, ratingId.getText());
+        ratingIntent.putExtra(INTENT_STUDENT_ID, ratingId.getText());
 
         startActivity(ratingIntent);
     }
+
 
 }

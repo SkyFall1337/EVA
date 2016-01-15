@@ -40,4 +40,23 @@ public class StudentService {
 
         return students;
     }
+
+    public Student findStudent(long studentId){
+        Cursor cursorStudent = studentRepository.findStudent(studentId);
+        cursorStudent.moveToFirst();
+        Long id = cursorStudent.getLong(cursorStudent.getColumnIndex(dbStudent._ID));
+        if (id == null) {
+            return null;
+        }
+
+        String studentVorname = cursorStudent.getString(cursorStudent.getColumnIndex(dbStudent.COLUMN_NAME_VORNAME));
+        String studentEmail = cursorStudent.getString(cursorStudent.getColumnIndex(dbStudent.COLUMN_NAME_EMAIL));
+
+        Student student = new Student();
+        student.setId(id);
+        student.setVorname(studentVorname);
+        student.setEmail(studentEmail);
+
+        return student;
+    }
 }
