@@ -9,13 +9,13 @@ public class Rating implements Serializable{
 
     private Long id;
 
-    private Long motivation;
+    private int motivation;
 
-    private Long teamfaehigkeit;
+    private int teamfaehigkeit;
 
-    private Long kommunikation;
+    private int kommunikation;
 
-    private long knowhow;
+    private int knowhow;
 
     private long studentb_fk;
 
@@ -24,7 +24,7 @@ public class Rating implements Serializable{
     public Rating(){
     }
 
-    public Rating(Long id, Long motivation, Long teamfaehigkeit, Long kommunikation, long knowhow, long studentb_fk, long student_fk) {
+    public Rating(Long id, int motivation, int teamfaehigkeit, int kommunikation, int knowhow, long studentb_fk, long student_fk) {
         this.id = id;
         this.motivation = motivation;
         this.teamfaehigkeit = teamfaehigkeit;
@@ -42,35 +42,35 @@ public class Rating implements Serializable{
         this.id = id;
     }
 
-    public Long getMotivation() {
+    public int getMotivation() {
         return motivation;
     }
 
-    public void setMotivation(Long motivation) {
+    public void setMotivation(int motivation) {
         this.motivation = motivation;
     }
 
-    public Long getTeamfaehigkeit() {
+    public int getTeamfaehigkeit() {
         return teamfaehigkeit;
     }
 
-    public void setTeamfaehigkeit(Long teamfaehigkeit) {
+    public void setTeamfaehigkeit(int teamfaehigkeit) {
         this.teamfaehigkeit = teamfaehigkeit;
     }
 
-    public Long getKommunikation() {
+    public int getKommunikation() {
         return kommunikation;
     }
 
-    public void setKommunikation(Long kommunikation) {
+    public void setKommunikation(int kommunikation) {
         this.kommunikation = kommunikation;
     }
 
-    public long getKnowhow() {
+    public int getKnowhow() {
         return knowhow;
     }
 
-    public void setKnowhow(long knowhow) {
+    public void setKnowhow(int knowhow) {
         this.knowhow = knowhow;
     }
 

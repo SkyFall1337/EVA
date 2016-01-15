@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+
+import java.util.List;
 
 import hska.eva.domain.Rating;
 import hska.eva.domain.Student;
@@ -21,12 +24,20 @@ public class RatingDetailActivity extends AppCompatActivity {
 
     private Rating rating;
 
+    private List<Rating> ratings;
+
+    private int currentRatingIndex = 0;
+
     private Student student;
+
+    private Student loggedInStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_detail);
+
+        loggedInStudent = ManagerActivity.loggedInStudent;
 
         fillView();
     }
@@ -51,7 +62,7 @@ public class RatingDetailActivity extends AppCompatActivity {
         ratingDetailEMail.setText(student.getEmail());
 
         TextView ratingDetailVorname = (TextView) findViewById(R.id.ratingDetailVorname);
-        ratingDetailVorname.setText(student.getVorname());
+        ratingDetailVorname.setText(student.getVorname() + " " + (student.getNachname()));
 
         /*TextView bonusTextView = (TextView) findViewById(R.id.surveyDetailBonusTextView);
         if(survey.getBonus() != null){
@@ -67,5 +78,15 @@ public class RatingDetailActivity extends AppCompatActivity {
         TextView questionsCountTextView = (TextView) findViewById(R.id.surveyDetailQuestionsCountTextView);
         questionsCountTextView.setText(questionsCountTextView.getText() + ": " + survey.getQuestions().size());
         */
+    }
+
+    public void onRatingClick(View clickedRatingBar){
+        Rating currentRating = ratings.get(currentRatingIndex);
+        Long currentRatingId = currentRating.getId();
+        int ratingBarId = clickedRatingBar.getId();
+
+        ratings.add(new Rating(currentRatingId, 0 , 0, 0, 0, loggedInStudent.getId(), currentRatingId));
+
+
     }
 }

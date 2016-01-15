@@ -50,11 +50,13 @@ public class StudentService {
         }
 
         String studentVorname = cursorStudent.getString(cursorStudent.getColumnIndex(dbStudent.COLUMN_NAME_VORNAME));
+        String studentNachname = cursorStudent.getString(cursorStudent.getColumnIndex(dbStudent.COLUMN_NAME_NACHNAME));
         String studentEmail = cursorStudent.getString(cursorStudent.getColumnIndex(dbStudent.COLUMN_NAME_EMAIL));
 
         Student student = new Student();
         student.setId(id);
         student.setVorname(studentVorname);
+        student.setNachname(studentNachname);
         student.setEmail(studentEmail);
 
         return student;

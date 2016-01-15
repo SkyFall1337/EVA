@@ -13,9 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import hska.eva.domain.Student;
 import hska.eva.fragments.ProfilFragment;
 import hska.eva.fragments.StudentsFragment;
-
 
 public class ManagerActivity extends AppCompatActivity {
 
@@ -23,6 +23,7 @@ public class ManagerActivity extends AppCompatActivity {
     public static Context applicationContext;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public static final String INTENT_STUDENT_ID = "studentID";
+    public static Student loggedInStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,21 @@ public class ManagerActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(mViewPager);
+
+    //Login ID Student
+    Intent intent = getIntent();
+    loggedInStudent = (Student) intent.getSerializableExtra(LoginActivity.INTENT_STUDENT);
     }
+
+    public void openRating(View clickedView){
+        Intent ratingIntent = new Intent(this, RatingDetailActivity.class);
+
+        TextView ratingId = (TextView) clickedView.findViewById(R.id.studentListViewStudentIdTextView);
+        ratingIntent.putExtra(INTENT_STUDENT_ID, ratingId.getText());
+
+        startActivity(ratingIntent);
+    }
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         String[] tabtitlearray = {"Meine Gruppe", "Meine Bewertungen"};
@@ -75,14 +90,7 @@ public class ManagerActivity extends AppCompatActivity {
         }
     }
 
-    public void openRating(View clickedView){
-        Intent ratingIntent = new Intent(this, RatingDetailActivity.class);
 
-        TextView ratingId = (TextView) clickedView.findViewById(R.id.studentListViewStudentIdTextView);
-        ratingIntent.putExtra(INTENT_STUDENT_ID, ratingId.getText());
-
-        startActivity(ratingIntent);
-    }
 
 
 }

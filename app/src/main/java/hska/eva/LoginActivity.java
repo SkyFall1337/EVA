@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    public static final String INTENT_STUDENT = "student";
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -268,6 +269,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (student != null) {
                 Intent intent = new Intent(getApplicationContext(), ManagerActivity.class);
+                intent.putExtra(INTENT_STUDENT, student);
                 startActivity(intent);
             } else {
                 mPasswordView.setError("This password is incorrect");

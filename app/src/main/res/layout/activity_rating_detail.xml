@@ -32,9 +32,9 @@
         android:layout_height="wrap_content"
         android:text="Bewertung abgeben"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_below="@+id/rating_kommunikation"
+        android:layout_alignLeft="@+id/ratingDetailVorname"
+        android:layout_alignStart="@+id/ratingDetailVorname" />
 
     <TextView
         android:layout_width="wrap_content"
