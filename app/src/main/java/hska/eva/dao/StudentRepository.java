@@ -21,7 +21,6 @@ public class StudentRepository {
         dbhelper = DatabaseHelper.getInstance(context);
         writeableDb = dbhelper.getWritableDatabase();
         readableDb = dbhelper.getReadableDatabase();
-
     }
 
     public Cursor findAllStudentsForOverview(){

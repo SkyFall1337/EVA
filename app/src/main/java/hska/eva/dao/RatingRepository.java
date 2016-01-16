@@ -12,7 +12,6 @@ import java.util.List;
 import hska.eva.dao.DatabaseSchema.dbRating;
 import hska.eva.domain.Rating;
 
-
 /**
  * Created by Luke on 12.01.2016.
  */
@@ -27,22 +26,10 @@ public class RatingRepository {
         writeableDb = dbHelper.getWritableDatabase();
     }
 
-    /*//Detail when User click on a Student Name
-    public Cursor createRatingForStudent(long studentId){
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        qb.setTables(
-                dbStudent.TABLE_NAME
-        );
-        return qb.query(readableDb,
-                null,
-                dbStudent.TABLE_NAME + "." + dbStudent._ID + " = " + studentId,
-                null, null, null, null);
-    }*/
-
-    public Cursor findRatingForStudent(long studentID) {
+    public Cursor findAllRatingsForStudent(long studentID){
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(dbRating.TABLE_NAME
-            );
+        );
         return qb.query(readableDb,
                 null,
                 dbRating.TABLE_NAME + "." + dbRating.COLUMN_NAME_STUDENT_FK + "=" + studentID,
