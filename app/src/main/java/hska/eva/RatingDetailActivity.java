@@ -63,21 +63,6 @@ public class RatingDetailActivity extends AppCompatActivity {
 
         TextView ratingDetailVorname = (TextView) findViewById(R.id.ratingDetailVorname);
         ratingDetailVorname.setText(student.getVorname() + " " + (student.getNachname()));
-
-        /*TextView bonusTextView = (TextView) findViewById(R.id.surveyDetailBonusTextView);
-        if(survey.getBonus() != null){
-            bonusTextView.setText(bonusTextView.getText() + ": " + survey.getBonus().getDescription());
-        }
-
-        if(survey.getQuestions().size() == 0){
-            Toast toast = Toast.makeText(getApplicationContext(), "Oups, no Questions available!", Toast.LENGTH_SHORT);
-            toast.show();
-            finish();
-        }
-
-        TextView questionsCountTextView = (TextView) findViewById(R.id.surveyDetailQuestionsCountTextView);
-        questionsCountTextView.setText(questionsCountTextView.getText() + ": " + survey.getQuestions().size());
-        */
     }
 
     public void onRatingClick(View clickedRatingBar){
@@ -86,7 +71,5 @@ public class RatingDetailActivity extends AppCompatActivity {
         int ratingBarId = clickedRatingBar.getId();
 
         ratings.add(new Rating(currentRatingId, 0 , 0, 0, 0, loggedInStudent.getId(), currentRatingId));
-
-
     }
 }

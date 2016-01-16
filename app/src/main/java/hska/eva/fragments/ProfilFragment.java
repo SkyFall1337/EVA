@@ -24,7 +24,6 @@ import hska.eva.service.RatingService;
 public class ProfilFragment extends Fragment {
 
     View contentView2;
-    ProgressBar motivationBar;
 
     private RatingService ratingService = new RatingService(ManagerActivity.applicationContext);
 
@@ -35,29 +34,35 @@ public class ProfilFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        contentView2 = inflater.inflate(R.layout.fragment_profil_layout, container, true);
+        contentView2 = inflater.inflate(R.layout.fragment_profil_layout, container, false);
 
         RatingsMw = (ratingService.findRatingsForStudent(loggedInStudent.getId()));
 
+        TextView motivationTextView = (TextView) contentView2.findViewById(R.id.textViewMwMo);
+        motivationTextView.setText("" + RatingsMw.get(0));
         ProgressBar motivationBar = (ProgressBar) contentView2.findViewById(R.id.progressBarMotivation);
-        motivationBar.setProgress(Math.round(RatingsMw.get(0)));
+        motivationBar.setProgress(Math.round(RatingsMw.get(0)*100));
 
+        TextView teamfaehigkeitTextView = (TextView) contentView2.findViewById(R.id.textViewMwTe);
+        teamfaehigkeitTextView.setText("" + RatingsMw.get(1));
         ProgressBar teamfaehigkeitBar = (ProgressBar) contentView2.findViewById(R.id.progressBarTeamfaehigkeit);
-        teamfaehigkeitBar.setProgress(Math.round(RatingsMw.get(1)));
+        teamfaehigkeitBar.setProgress(Math.round(RatingsMw.get(1)*100));
 
+        TextView kommunikationTextView = (TextView) contentView2.findViewById(R.id.textViewMwKo);
+        kommunikationTextView.setText("" + RatingsMw.get(2));
         ProgressBar kommunikationBar = (ProgressBar) contentView2.findViewById(R.id.progressBarKommunikation);
-        kommunikationBar.setProgress(Math.round(RatingsMw.get(2)));
+        kommunikationBar.setProgress(Math.round(RatingsMw.get(2)*100));
 
+        TextView knowHowTextView = (TextView) contentView2.findViewById(R.id.textViewMwKn);
+        knowHowTextView.setText("" + RatingsMw.get(3));
         ProgressBar knowHowBar = (ProgressBar) contentView2.findViewById(R.id.progressBarKnowHow);
-        knowHowBar.setProgress(Math.round(RatingsMw.get(3)));
+        knowHowBar.setProgress(Math.round(RatingsMw.get(3)*100));
 
-        TextView gesamtTextView = (TextView) contentView2.findViewById(R.id.textViewMw);
-        knowHowBar.setProgress(Math.round(RatingsMw.get(4)));
+        TextView gesamtTextView = (TextView) contentView2.findViewById(R.id.textViewMwInt);
+        gesamtTextView.setText("" + Math.round(RatingsMw.get(4)));
 
         return contentView2;
     }
-
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

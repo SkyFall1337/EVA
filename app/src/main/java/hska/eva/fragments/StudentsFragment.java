@@ -28,7 +28,6 @@ public class StudentsFragment extends Fragment {
 
     private StudentService studentService = new StudentService(ManagerActivity.applicationContext);
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

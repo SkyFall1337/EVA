@@ -16,7 +16,6 @@ import hska.eva.domain.Rating;
 public class RatingService {
     private RatingRepository ratingRepository;
 
-
     public RatingService(Context ctx) {
         ratingRepository = new RatingRepository(ctx);
     }
@@ -28,70 +27,56 @@ public class RatingService {
         float sumTeamfaehigkeit = 0;
         float sumKommunikation = 0;
         float sumKnowHow =  0;
+        float sumGesamt = 0;
         int counter = 0;
 
         Cursor cursorRating = ratingRepository.findAllRatingsForStudent(studentID);
-        cursorRating.moveToFirst();
-        do {
-            long ratingId = cursorRating.getLong(cursorRating.getColumnIndex(dbRating._ID));
-            int ratingMotivation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_MOTIVATION));
-            int ratingTeamfaehigkeit = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_TEAMFAEHIGKEIT));
-            int ratingKommunikation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KOMMUNIKATION));
-            int ratingKnowhow = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KNOWHOW));
-            long ratingStudentb_fk = cursorRating.getLong(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_STUDENTB_FK));
 
-            ratings.add(new Rating(ratingId, ratingMotivation, ratingTeamfaehigkeit, ratingKommunikation, ratingKnowhow, ratingStudentb_fk, studentID));
+        if ( cursorRating.moveToFirst()) {
+            do {
+                long ratingId = cursorRating.getLong(cursorRating.getColumnIndex(dbRating._ID));
+                int ratingMotivation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_MOTIVATION));
+                int ratingTeamfaehigkeit = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_TEAMFAEHIGKEIT));
+                int ratingKommunikation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KOMMUNIKATION));
+                int ratingKnowhow = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KNOWHOW));
+                long ratingStudentb_fk = cursorRating.getLong(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_STUDENTB_FK));
+
+                ratings.add(new Rating(ratingId, ratingMotivation, ratingTeamfaehigkeit, ratingKommunikation, ratingKnowhow, ratingStudentb_fk, studentID));
+            }
+            while (cursorRating.moveToNext());
+
+            for (Rating rating : ratings) {
+                sumMotivation += rating.getMotivation();
+                sumTeamfaehigkeit += rating.getTeamfaehigkeit();
+                sumKommunikation += rating.getKommunikation();
+                sumKnowHow += rating.getKnowhow();
+                counter += 1;
+            }
+            // Mittelwert der Attribute berechnen
+            float mwMotivation = sumMotivation / counter;
+            float mwTeamfaehigkeit = sumTeamfaehigkeit / counter;
+            float mwKommunikation = sumKommunikation / counter;
+            float mwKnowHow = sumKnowHow / counter;
+            float mwGesamt = mwMotivation + mwTeamfaehigkeit + mwKommunikation + mwKnowHow / counter;
+
+            //Add MittelWerte in Liste
+            List<Float> mittelWerte = new ArrayList<Float>();
+            mittelWerte.add(mwMotivation);
+            mittelWerte.add(mwTeamfaehigkeit);
+            mittelWerte.add(mwKommunikation);
+            mittelWerte.add(mwKnowHow);
+            mittelWerte.add(mwGesamt);
+            return mittelWerte;
         }
-        while (cursorRating.moveToNext());
 
-        for (Rating rating : ratings){
-            sumMotivation += rating.getMotivation();
-            sumTeamfaehigkeit += rating.getTeamfaehigkeit();
-            sumKommunikation += rating.getKommunikation();
-            sumKnowHow += rating.getKnowhow();
-            counter += 1;
+        else {
+            List<Float> mittelWerte = new ArrayList<Float>();
+            mittelWerte.add(sumMotivation);
+            mittelWerte.add(sumTeamfaehigkeit);
+            mittelWerte.add(sumKommunikation);
+            mittelWerte.add(sumKnowHow);
+            mittelWerte.add(sumGesamt);
+            return mittelWerte;
         }
-        // Mittelwert der Attribute berechnen
-        float mwMotivation = sumMotivation / counter;
-        float mwTeamfaehigkeit = sumTeamfaehigkeit / counter;
-        float mwKommunikation = sumKommunikation / counter;
-        float mwKnowHow = sumKnowHow / counter;
-        float mwGesamt = mwMotivation + mwTeamfaehigkeit + mwKommunikation + mwKnowHow/4;
-
-        //Add MittelWerte in Liste
-        List<Float> mittelWerte = new ArrayList<Float>();
-        mittelWerte.add(mwMotivation);
-        mittelWerte.add(mwTeamfaehigkeit);
-        mittelWerte.add(mwKommunikation);
-        mittelWerte.add(mwKnowHow);
-        mittelWerte.add(mwGesamt);
-        return mittelWerte;
     }
-
-    /*
-    public Rating findRatingForStudent(long studentID) {
-        Cursor cursorRating = ratingRepository.findRatingForStudent(studentID);
-        cursorRating.moveToFirst();
-        Long id = cursorRating.getLong(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_STUDENT_FK));
-        if (id==null){
-            return null;
-        }
-
-        int ratingMotivation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_MOTIVATION));
-        int ratingTeamfaehigkeit = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_TEAMFAEHIGKEIT));
-        int ratingKommunikation = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KOMMUNIKATION));
-        int ratingKnowhow = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_KNOWHOW));
-        int ratingStudentb_fk = cursorRating.getInt(cursorRating.getColumnIndex(dbRating.COLUMN_NAME_STUDENTB_FK));
-
-        Rating rating = new Rating();
-        rating.setId(id);
-        rating.setMotivation(ratingMotivation);
-        rating.setTeamfaehigkeit(ratingTeamfaehigkeit);
-        rating.setKommunikation(ratingKommunikation);
-        rating.setKnowhow(ratingKnowhow);
-        rating.setStudent_fk(studentID);
-        rating.setStudentb_fk(ratingStudentb_fk);
-
-        return rating;
-    }*/
 }
