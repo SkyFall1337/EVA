@@ -57,7 +57,7 @@ public class RatingService {
             float mwTeamfaehigkeit = sumTeamfaehigkeit / counter;
             float mwKommunikation = sumKommunikation / counter;
             float mwKnowHow = sumKnowHow / counter;
-            float mwGesamt = mwMotivation + mwTeamfaehigkeit + mwKommunikation + mwKnowHow / counter;
+            float mwGesamt = (mwMotivation + mwTeamfaehigkeit + mwKommunikation + mwKnowHow)/4;
 
             //Add MittelWerte in Liste
             List<Float> mittelWerte = new ArrayList<Float>();
