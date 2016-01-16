@@ -50,12 +50,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             "DROP TABLE IF EXISTS " + dbRating.TABLE_NAME;
 
     private static DatabaseHelper instance;
-    private Context ctx;
-    SQLiteDatabase db;
 
     private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.ctx = context;
+        Context ctx = context;
     }
 
     public static DatabaseHelper getInstance(Context ctx){

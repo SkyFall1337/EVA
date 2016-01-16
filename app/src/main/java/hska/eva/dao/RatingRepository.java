@@ -32,7 +32,7 @@ public class RatingRepository {
                 dbRating.TABLE_NAME + "." + dbRating.COLUMN_NAME_STUDENT_FK + "=" + studentID,
                 null, null, null, null);
     }
-    
+
     public Rating addRating(Rating rating){
         ContentValues values = new ContentValues();
         values.put(dbRating.COLUMN_NAME_MOTIVATION, rating.getMotivation());

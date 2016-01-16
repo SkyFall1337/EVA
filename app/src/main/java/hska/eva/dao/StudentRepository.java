@@ -14,18 +14,15 @@ import hska.eva.domain.Student;
 public class StudentRepository {
 
     private DatabaseHelper dbhelper;
-    private SQLiteDatabase writeableDb;
     private SQLiteDatabase readableDb;
 
     public StudentRepository(Context context){
         dbhelper = DatabaseHelper.getInstance(context);
-        writeableDb = dbhelper.getWritableDatabase();
         readableDb = dbhelper.getReadableDatabase();
     }
 
     public Cursor findAllStudentsForOverview(){
-        Cursor cursor = readableDb.query(dbStudent.TABLE_NAME, null, null, null, null, null, null);
-        return cursor;
+        return readableDb.query(dbStudent.TABLE_NAME, null, null, null, null, null, null);
     }
 
     public Student findStudentWithLoginInformation(String email, String password){
