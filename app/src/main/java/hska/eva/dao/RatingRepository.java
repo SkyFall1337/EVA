@@ -34,13 +34,14 @@ public class RatingRepository {
                 null, null, null, null);
     }*/
 
-    public Cursor findRatingForStudent(long studentID) {
+    public Cursor findAllRatingsForStudent(long studentID){
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(dbRating.TABLE_NAME
-            );
+        );
         return qb.query(readableDb,
                 null,
                 dbRating.TABLE_NAME + "." + dbRating.COLUMN_NAME_STUDENT_FK + "=" + studentID,
                 null, null, null, null);
     }
+
 }

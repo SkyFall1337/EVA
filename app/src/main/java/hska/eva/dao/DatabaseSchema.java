@@ -28,6 +28,6 @@ public final class DatabaseSchema {
         public static final String COLUMN_NAME_KOMMUNIKATION = "kommunikation";
         public static final String COLUMN_NAME_KNOWHOW = "knowhow";
         public static final String COLUMN_NAME_STUDENTB_FK = "bewerter";
-        public static final String COLUMN_NAME_STUDENT_FK = "bewerteter";
+        public static final String COLUMN_NAME_STUDENT_FK = "bewertete";
     }
 }
