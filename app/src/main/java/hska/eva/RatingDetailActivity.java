@@ -12,22 +12,15 @@ import android.widget.TextView;
 import hska.eva.dao.RatingRepository;
 import hska.eva.domain.Rating;
 import hska.eva.domain.Student;
-import hska.eva.service.RatingService;
 import hska.eva.service.StudentService;
 
 public class RatingDetailActivity extends AppCompatActivity {
-
-    public static final String INTENT_RATING = "intentSurveyfregzhjzjzzj";
 
     private StudentService studentService = new StudentService(ManagerActivity.applicationContext);
 
     private Student bewerteterStudent;
 
-    private Student loggedInStudent;
-
     private RatingRepository ratingRepository;
-
-    private int currentRatingIndex = 0;
 
     private static Button button_sbm;
     private static RatingBar rating_m;
@@ -73,11 +66,6 @@ public class RatingDetailActivity extends AppCompatActivity {
         TextView ratingDetailVorname = (TextView) findViewById(R.id.ratingDetailVorname);
         ratingDetailVorname.setText(bewerteterStudent.getVorname() + " " + (bewerteterStudent.getNachname()));
     }
-
-    public void onRatingClick(View clickedRatingBar){
-        Rating currentRating = ratings.get(currentRatingIndex);
-        Long currentRatingId = currentRating.getId();
-        int ratingBarId = clickedRatingBar.getId();
 
     public void onButtonClickListener() {
         rating_m = (RatingBar) findViewById(R.id.rating_motivation);
