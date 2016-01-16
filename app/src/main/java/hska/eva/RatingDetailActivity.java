@@ -5,32 +5,32 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.util.List;
-
+import hska.eva.dao.RatingRepository;
 import hska.eva.domain.Rating;
 import hska.eva.domain.Student;
-import hska.eva.service.RatingService;
 import hska.eva.service.StudentService;
 
 public class RatingDetailActivity extends AppCompatActivity {
 
-    public static final String INTENT_RATING = "intentSurveyfregzhjzjzzj";
-
     private StudentService studentService = new StudentService(ManagerActivity.applicationContext);
 
-    private RatingService ratingService = new RatingService(ManagerActivity.applicationContext);
-
-    private Rating rating;
-
-    private List<Rating> ratings;
-
-    private int currentRatingIndex = 0;
-
-    private Student student;
+    private Student bewerteterStudent;
 
     private Student loggedInStudent;
+
+    private RatingRepository ratingRepository;
+
+
+    private static Button button_sbm;
+    private static RatingBar rating_m;
+    private static RatingBar rating_tf;
+    private static RatingBar rating_kh;
+    private static RatingBar rating_k;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,11 @@ public class RatingDetailActivity extends AppCompatActivity {
 
         loggedInStudent = ManagerActivity.loggedInStudent;
 
+        ratingRepository = new RatingRepository(getApplicationContext());
+
+
         fillView();
+        onButtonClickListener();
     }
 
     @Override
@@ -56,37 +60,35 @@ public class RatingDetailActivity extends AppCompatActivity {
     private void fillView(){
         Intent intent = getIntent();
         String studentId = intent.getStringExtra(ManagerActivity.INTENT_STUDENT_ID);
-        student = studentService.findStudent(Long.valueOf(studentId));
+        bewerteterStudent = studentService.findStudent(Long.valueOf(studentId));
 
         TextView ratingDetailEMail = (TextView) findViewById(R.id.ratingDetailEMail);
-        ratingDetailEMail.setText(student.getEmail());
+        ratingDetailEMail.setText(bewerteterStudent.getEmail());
 
         TextView ratingDetailVorname = (TextView) findViewById(R.id.ratingDetailVorname);
-        ratingDetailVorname.setText(student.getVorname() + " " + (student.getNachname()));
-
-        /*TextView bonusTextView = (TextView) findViewById(R.id.surveyDetailBonusTextView);
-        if(survey.getBonus() != null){
-            bonusTextView.setText(bonusTextView.getText() + ": " + survey.getBonus().getDescription());
-        }
-
-        if(survey.getQuestions().size() == 0){
-            Toast toast = Toast.makeText(getApplicationContext(), "Oups, no Questions available!", Toast.LENGTH_SHORT);
-            toast.show();
-            finish();
-        }
-
-        TextView questionsCountTextView = (TextView) findViewById(R.id.surveyDetailQuestionsCountTextView);
-        questionsCountTextView.setText(questionsCountTextView.getText() + ": " + survey.getQuestions().size());
-        */
+        ratingDetailVorname.setText(bewerteterStudent.getVorname() + " " + (bewerteterStudent.getNachname()));
     }
 
-    public void onRatingClick(View clickedRatingBar){
-        Rating currentRating = ratings.get(currentRatingIndex);
-        Long currentRatingId = currentRating.getId();
-        int ratingBarId = clickedRatingBar.getId();
 
-        ratings.add(new Rating(currentRatingId, 0 , 0, 0, 0, loggedInStudent.getId(), currentRatingId));
+    public void onButtonClickListener() {
+        rating_m = (RatingBar) findViewById(R.id.rating_motivation);
+        rating_tf = (RatingBar) findViewById(R.id.rating_teamfaehigkeit);
+        rating_kh = (RatingBar) findViewById(R.id.rating_knowhow);
+        rating_k = (RatingBar) findViewById(R.id.rating_kommunikation);
+        button_sbm = (Button) findViewById(R.id.button);
 
-
+        button_sbm.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Rating rating = new Rating(null, Math.round(rating_m.getRating()),
+                                Math.round(rating_tf.getRating()), Math.round(rating_kh.getRating()),
+                                Math.round(rating_k.getRating()), loggedInStudent.getId(),
+                                bewerteterStudent.getId());
+                        ratingRepository.addRating(rating);
+                        finish();
+                    }
+                }
+        );
     }
 }
