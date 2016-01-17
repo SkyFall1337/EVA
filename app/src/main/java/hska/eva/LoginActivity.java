@@ -268,7 +268,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected void onPostExecute(final Student student) {
+        protected void onPostExecute(Student student) {
             mAuthTask = null;
 
             if (student != null) {

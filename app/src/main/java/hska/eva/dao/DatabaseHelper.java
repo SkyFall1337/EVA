@@ -12,7 +12,7 @@ import hska.eva.dao.DatabaseSchema.dbStudent;
  * Created by Luke on 08.01.2016.
  */
 public class DatabaseHelper extends SQLiteOpenHelper{
-    public static final int DATABASE_VERSION = 6;
+    public static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "eva.db";
 
     /*****************/
@@ -86,14 +86,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.insert(dbStudent.TABLE_NAME, null, values);
 
         values = new ContentValues();
-        values.put(dbStudent.COLUMN_NAME_EMAIL, "beno1012@hs-karlsruhe.de.de");
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "beno1012@hs-karlsruhe.de");
         values.put(dbStudent.COLUMN_NAME_VORNAME, "Norman");
         values.put(dbStudent.COLUMN_NAME_NACHNAME, "Beyerle");
         values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");
         db.insert(dbStudent.TABLE_NAME, null, values);
 
         values = new ContentValues();
-        values.put(dbStudent.COLUMN_NAME_EMAIL, "Muma1012@hs-karlsruhe.de.de");
+        values.put(dbStudent.COLUMN_NAME_EMAIL, "muma1012@hs-karlsruhe.de");
         values.put(dbStudent.COLUMN_NAME_VORNAME, "Matthias");
         values.put(dbStudent.COLUMN_NAME_NACHNAME, "Müller");
         values.put(dbStudent.COLUMN_NAME_PASSWORD, "password");

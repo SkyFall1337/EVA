@@ -21,8 +21,6 @@ public class Rating implements Serializable{
 
     private long student_fk;
 
-    public Rating(){
-    }
 
     public Rating(Long id, int motivation, int teamfaehigkeit, int kommunikation, int knowhow, long studentb_fk, long student_fk) {
         this.id = id;
