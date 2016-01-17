@@ -11,6 +11,7 @@
         android:text="Motivation"
         android:id="@+id/textViewMotivation"
         android:layout_below="@+id/textViewHead"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true" />
 
     <ProgressBar
@@ -104,9 +105,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Mittelwert Gesamt:"
+        android:text="Durchschnitt:"
         android:id="@+id/textViewMw"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/progressBarKommunikation"
         android:layout_centerHorizontal="true" />
 
@@ -153,5 +154,23 @@
         android:text="2,1"
         android:id="@+id/textViewMwMo"
         android:layout_alignTop="@+id/progressBarMotivation"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="loggedInStudent"
+        android:id="@+id/loggedInStudent"
+        android:layout_below="@+id/textViewHead"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bewertung von:"
+        android:id="@+id/idStudent"
+        android:layout_above="@+id/textViewMotivation"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -39,27 +39,48 @@ public class ProfilFragment extends Fragment {
         RatingsMw = (ratingService.findRatingsForStudent(loggedInStudent.getId()));
 
         TextView motivationTextView = (TextView) contentView2.findViewById(R.id.textViewMwMo);
-        motivationTextView.setText("" + RatingsMw.get(0));
+        float roundRating = RatingsMw.get(0) * 100;
+        roundRating = Math.round(roundRating);
+        roundRating = roundRating / 100;
+        motivationTextView.setText("" + roundRating);
+        //ProgressBar Motivation
         ProgressBar motivationBar = (ProgressBar) contentView2.findViewById(R.id.progressBarMotivation);
-        motivationBar.setProgress(Math.round(RatingsMw.get(0)*100));
+        motivationBar.setProgress(Math.round(RatingsMw.get(0) * 100));
 
         TextView teamfaehigkeitTextView = (TextView) contentView2.findViewById(R.id.textViewMwTe);
-        teamfaehigkeitTextView.setText("" + RatingsMw.get(1));
+        float roundTeamf = RatingsMw.get(1) * 100;
+        roundTeamf = Math.round(roundTeamf);
+        roundTeamf = roundTeamf / 100;
+        teamfaehigkeitTextView.setText("" + roundTeamf);
+        //ProgressBar Teamfaehigkeit
         ProgressBar teamfaehigkeitBar = (ProgressBar) contentView2.findViewById(R.id.progressBarTeamfaehigkeit);
-        teamfaehigkeitBar.setProgress(Math.round(RatingsMw.get(1)*100));
+        teamfaehigkeitBar.setProgress(Math.round(RatingsMw.get(1) * 100));
 
         TextView kommunikationTextView = (TextView) contentView2.findViewById(R.id.textViewMwKo);
-        kommunikationTextView.setText("" + RatingsMw.get(2));
+        float roundKommunikation = RatingsMw.get(2) * 100;
+        roundKommunikation = Math.round(roundKommunikation);
+        roundKommunikation = roundKommunikation / 100;
+        kommunikationTextView.setText("" + roundKommunikation);
+        //ProgressBarKommunikation
         ProgressBar kommunikationBar = (ProgressBar) contentView2.findViewById(R.id.progressBarKommunikation);
         kommunikationBar.setProgress(Math.round(RatingsMw.get(2)*100));
 
         TextView knowHowTextView = (TextView) contentView2.findViewById(R.id.textViewMwKn);
-        knowHowTextView.setText("" + RatingsMw.get(3));
+        float roundKnowHow = RatingsMw.get(3) * 100;
+        roundKnowHow = Math.round(roundKnowHow);
+        roundKnowHow = roundKnowHow / 100;
+        knowHowTextView.setText("" + roundKnowHow);
+        //ProgressBar KnowHow
         ProgressBar knowHowBar = (ProgressBar) contentView2.findViewById(R.id.progressBarKnowHow);
-        knowHowBar.setProgress(Math.round(RatingsMw.get(3)*100));
+        knowHowBar.setProgress(Math.round(RatingsMw.get(3) * 100));
 
+        //TextView Mittelwert
         TextView gesamtTextView = (TextView) contentView2.findViewById(R.id.textViewMwInt);
         gesamtTextView.setText("" + Math.round(RatingsMw.get(4)));
+
+        //loggedInStudent Anzeige
+        TextView loggedInTextView = (TextView) contentView2.findViewById(R.id.loggedInStudent);
+        loggedInTextView.setText(loggedInStudent.getEmail());
 
         return contentView2;
     }
