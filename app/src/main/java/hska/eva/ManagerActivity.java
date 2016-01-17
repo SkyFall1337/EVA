@@ -3,6 +3,7 @@ package hska.eva;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import hska.eva.domain.Student;
@@ -24,6 +26,7 @@ public class ManagerActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public static final String INTENT_STUDENT_ID = "studentID";
     public static Student loggedInStudent;
+    FloatingActionButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,12 @@ public class ManagerActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-    //Login ID Student
-    Intent intent = getIntent();
-    loggedInStudent = (Student) intent.getSerializableExtra(LoginActivity.INTENT_STUDENT);
+        //Login ID Student
+        Intent intent = getIntent();
+        loggedInStudent = (Student) intent.getSerializableExtra(LoginActivity.INTENT_STUDENT);
+
+        //Logout Student
+        onLogoutClickListener();
     }
 
     public void openRating(View clickedView){
@@ -91,6 +97,17 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
 
+    public void onLogoutClickListener() {
+        logout = (FloatingActionButton) findViewById(R.id.logout_btn);
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagerActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
 }
