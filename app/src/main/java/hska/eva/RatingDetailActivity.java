@@ -3,8 +3,10 @@ package hska.eva;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroupOverlay;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import hska.eva.dao.RatingRepository;
 import hska.eva.domain.Rating;
 import hska.eva.domain.Student;
+import hska.eva.fragments.ProfilFragment;
+import hska.eva.service.RatingService;
 import hska.eva.service.StudentService;
 
 public class RatingDetailActivity extends AppCompatActivity {
@@ -21,6 +25,8 @@ public class RatingDetailActivity extends AppCompatActivity {
     private Student bewerteterStudent;
 
     private RatingRepository ratingRepository;
+
+    private ProfilFragment bewertung_fragment;
 
     private static Button button_sbm;
     private static RatingBar rating_m;
@@ -82,8 +88,8 @@ public class RatingDetailActivity extends AppCompatActivity {
                                 Math.round(rating_tf.getRating()), Math.round(rating_kh.getRating()),
                                 Math.round(rating_k.getRating()), loggedInStudent.getId(),
                                 bewerteterStudent.getId());
-                        ratingRepository.addRating(rating);
-                        finish();
+                                ratingRepository.addRating(rating);
+                                finish();
                     }
                 }
         );

@@ -14,6 +14,8 @@ import java.util.List;
 
 import hska.eva.ManagerActivity;
 import hska.eva.R;
+import hska.eva.dao.RatingRepository;
+import hska.eva.domain.Rating;
 import hska.eva.domain.Student;
 import hska.eva.service.RatingService;
 
@@ -25,7 +27,7 @@ public class ProfilFragment extends Fragment {
 
     View contentView2;
 
-    private RatingService ratingService = new RatingService(ManagerActivity.applicationContext);
+    private RatingService ratingService;
 
     public static Student loggedInStudent;
 
@@ -36,10 +38,32 @@ public class ProfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         contentView2 = inflater.inflate(R.layout.fragment_profil_layout, container, false);
 
+        ratingService = new RatingService(ManagerActivity.applicationContext);
+
         loggedInStudent = ManagerActivity.loggedInStudent;
 
         RatingsMw = (ratingService.findRatingsForStudent(loggedInStudent.getId()));
 
+        drawGUI();
+
+        return contentView2;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        //ratingService hier benutzen und dan repository weiterleiten
+                //MEthode "findAllRatingsForStudent" im service ewrstellen^^
+        RatingsMw = ratingService.findRatingsForStudent(loggedInStudent.getId());
+        drawGUI();
+    }
+
+    private void drawGUI() {
         TextView motivationTextView = (TextView) contentView2.findViewById(R.id.textViewMwMo);
         float roundRating = RatingsMw.get(0) * 100;
         roundRating = Math.round(roundRating);
@@ -83,12 +107,5 @@ public class ProfilFragment extends Fragment {
         //loggedInStudent Anzeige
         TextView loggedInTextView = (TextView) contentView2.findViewById(R.id.loggedInStudent);
         loggedInTextView.setText(loggedInStudent.getEmail());
-
-        return contentView2;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 }
