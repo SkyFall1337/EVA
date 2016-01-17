@@ -28,6 +28,17 @@ public class Student implements Serializable {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

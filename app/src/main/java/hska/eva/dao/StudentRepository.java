@@ -34,8 +34,6 @@ public class StudentRepository {
             String studentEmail = cursor.getString(cursor.getColumnIndex(DatabaseSchema.dbStudent.COLUMN_NAME_EMAIL));
             String studentPassword = cursor.getString(cursor.getColumnIndex(DatabaseSchema.dbStudent.COLUMN_NAME_PASSWORD));
 
-            System.out.println(new Student(studentId, studentEmail, studentPassword, null, null));
-
             if (studentEmail.equals(email) && studentPassword.equals(password)) {
                 return new Student(studentId, studentEmail, studentPassword, null, null);
             }

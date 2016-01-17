@@ -27,7 +27,7 @@ public class ProfilFragment extends Fragment {
 
     private RatingService ratingService = new RatingService(ManagerActivity.applicationContext);
 
-    public static Student loggedInStudent = ManagerActivity.loggedInStudent;
+    public static Student loggedInStudent;
 
     List<Float>  RatingsMw = new ArrayList<>();
 
@@ -35,6 +35,8 @@ public class ProfilFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         contentView2 = inflater.inflate(R.layout.fragment_profil_layout, container, false);
+
+        loggedInStudent = ManagerActivity.loggedInStudent;
 
         RatingsMw = (ratingService.findRatingsForStudent(loggedInStudent.getId()));
 

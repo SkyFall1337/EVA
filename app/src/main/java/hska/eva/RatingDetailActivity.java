@@ -55,7 +55,7 @@ public class RatingDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void fillView(){
+    public void fillView(){
         Intent intent = getIntent();
         String studentId = intent.getStringExtra(ManagerActivity.INTENT_STUDENT_ID);
         bewerteterStudent = studentService.findStudent(Long.valueOf(studentId));
