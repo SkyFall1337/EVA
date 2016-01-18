@@ -57,8 +57,6 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        //ratingService hier benutzen und dan repository weiterleiten
-                //MEthode "findAllRatingsForStudent" im service ewrstellen^^
         RatingsMw = ratingService.findRatingsForStudent(loggedInStudent.getId());
         drawGUI();
     }

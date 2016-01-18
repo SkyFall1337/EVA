@@ -20,11 +20,6 @@ public class RatingService {
         ratingRepository = new RatingRepository(ctx);
     }
 
-    //TODO
-    public long checkRatingIfExist(long studentID){
-        return 0;
-    }
-
     public List<Float> findRatingsForStudent(long studentID){
         List<Rating> ratings = new ArrayList<>();
 
